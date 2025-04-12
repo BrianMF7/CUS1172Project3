@@ -202,44 +202,42 @@ function showCorrectFeedback() {
     }, 1000);
 }
 
-//Provide feedback for wrong answer
+                    //Provide feedback for wrong answer
 function showIncorrectFeedback(userAnswer, correctAnswer, explanation) {
-    const template = Handlebars.compile(document.getElementById('incorrect-template').innerHTML);
+                         const template = Handlebars.compile(document.getElementById('incorrect-template').innerHTML);
     document.getElementById('app-container').innerHTML = template({
         userAnswer, correctAnswer, explanation
     });
 
-    document.getElementById('got-it-btn').addEventListener('click', () => {
+             document.getElementById('got-it-btn').addEventListener('click', () => {
         currentQuestionIndex++;
         loadQuestion(currentQuiz.id);
-    });
-}
+    });}
 
 //Results screen
-function showResults() {
-    if (timePass) clearInterval(timePass);
+function showResults() {  if (timePass) clearInterval(timePass);
 
     const score = calculateScore();
-    const passed = score >= 80;
+            const passed = score >= 80;
 
     const template = Handlebars.compile(document.getElementById('results-template').innerHTML);
 
-    document.getElementById('app-container').innerHTML = template({
+                    document.getElementById('app-container').innerHTML = template({
         name: studentName,
         score,
-        passed,
+                passed,
         correct: correctAnswers,
-        total: userAnswers.length,
+                total: userAnswers.length,
         time: getElapsedTime()
-    });
+});
 
     //The event listeners in buttons
     document.getElementById('retake-btn').addEventListener('click', () => {
         currentQuestionIndex = 0;
         userAnswers = [];
         correctAnswers = 0;
-        questions = [];
-        startTime = new Date();
+              questions = [];
+             startTime = new Date();
         startTimer();
         loadQuestion(currentQuiz.id);
     });

@@ -61,25 +61,25 @@ pre {
 .scoreboard {
              background-color: #f0f8ff !important;
          border: 1px solid #bde0fe;
-     border-radius: 0.5rem;
-        }
+    border-radius: 0.5rem;
+}
 
 .alert-success {
     background-color: #d4edda;
         color: #155724;
     border-color: #c3e6cb;
             font-size: 1.5rem;
-        }
+}
 
         .navbar-custom {
     background-color: #0a6262 !important;
-            }
+}
 
 .navbar-custom .navbar-brand, 
-            .navbar-custom .nav-link {
-       color: #000000 !important;
+.navbar-custom .nav-link {
+    color: #000000 !important;
     font-weight: bold;
-        }
+}
 
 .navbar-custom .nav-link:hover {
     color: #333333 !important;
@@ -87,14 +87,14 @@ pre {
                 }
 
    .footer-custom {
- padding: 30px 0;
+    padding: 30px 0;
     color: black;
     font-size: 20px;
-          text-align: center;
+      text-align: center;
     background-color: #0a6262;
-           border-top: 1px solid #e5e5e5;
+     border-top: 1px solid #e5e5e5;
     position: relative;
-           width: 100%;
+    width: 100%;
     margin-top: auto;
     font-weight: bold;
         }
@@ -104,41 +104,41 @@ pre {
 }
 
 .btn-primary {
-             background-color: #28a745 !important;
+    background-color: #28a745 !important;
      border-color: #28a745 !important;
     }
 
         .btn-primary:hover {
-                 background-color: #218838 !important;
+    background-color: #218838 !important;
     border-color: #1e7e34 !important;
         }
 
 
 
         .form-control:focus {
-                     border-color: #28a745;
+    border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
             }
 
 h1.text-center.mb-4 {
     padding-top: 20px;
-                  padding-bottom: 10px;
+             padding-bottom: 10px;
 }
 
 #welcomeTemplate .card-header h2 {
-                padding: 5px 0;
+    padding: 5px 0;
 }           
 
 @media (max-width: 768px) {
-                 .navbar-custom .navbar-toggler {
-               border-color: #000000;
+    .navbar-custom .navbar-toggler {
+        border-color: #000000;
     }
     
-  .navbar-custom .navbar-toggler-icon {
+    .navbar-custom .navbar-toggler-icon {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-     }
+    }
     
     .footer-custom {
-               font-size: 0.9rem;
-                 }
+        font-size: 0.9rem;
+    }
 }

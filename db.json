@@ -134,7 +134,7 @@
         "id": 10,
         "quizId": 2,
         "type": "true-false",
-        "text": "Can Pytho be used for web development?",
+        "text": "Can Python be used for web development?",
         "correctAnswer": true,
         "explanation": "There are various frameworks like Django and Flask that allow Python to be used for web development."
       },

@@ -1,0 +1,192 @@
+{
+    "quizzes": [
+      {
+        "id": 1,
+        "title": "JavaScript Basics Quiz",
+        "description": "Test your knowledge of JavaScript syntax, history, and purpose.",
+        "timeLimit": 10,
+        "passingScore": 60
+      },
+      {
+        "id": 2,
+        "title": "Python Basics Quiz",
+        "description": "Test your knowledge of Python programming concepts, syntax, and features.",
+        "timeLimit": 10,
+        "passingScore": 70
+      }
+    ],
+    "questions": [
+      {
+        "id": 1,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "Who created JavaScript?",
+        "options": [
+          "Brendan Eich",
+          "Tim Berners-Lee",
+          "Bill Gates",
+          "James Gosling"
+        ],
+        "correctAnswer": "Brendan Eich",
+        "explanation": "JavaScript was created by Brendan Eich in 1995 while he was working at Netscape Communications Corporation."
+      },
+      {
+        "id": 2,
+        "quizId": 1,
+        "type": "true-false",
+        "text": "JavaScript was originally called 'Mocha'.",
+        "correctAnswer": true,
+        "explanation": "JavaScript was initially called 'Mocha', then renamed to 'LiveScript', and finally to 'JavaScript'."
+      },
+      {
+        "id": 3,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "What is the correct syntax for a JavaScript comment?",
+        "options": [
+          "<!-- This is a comment -->",
+          "// This is a comment",
+          "/* This is a comment */",
+          "Both B and C"
+        ],
+        "correctAnswer": "Both B and C",
+        "explanation": "JavaScript supports both single-line comments with // and multi-line comments with /* */."
+      },
+      {
+        "id": 4,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "Which of the following doesn't exist in JavasScript?",
+        "options": [
+          "React.js",
+          "Node.js",
+          "Next.js",
+          "Java"
+        ],
+        "correctAnswer": "Java",
+        "explanation": "Java is another programming language, while React.js, Node.js, and Next.js are JavaScript frameworks and libraries."
+      },
+      {
+        "id": 5,
+        "quizId": 1,
+        "type": "true-false",
+        "text": "JavaScript is primarily a server-side programming language.",
+        "correctAnswer": false,
+        "explanation": "JavaScript was originally designed as a client-side scripting language for web browsers, though it is now used on servers with Node.js as well."
+      },
+      {
+        "id": 6,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "What is the primary purpose of JavaScript?",
+        "options": [
+          "To style web pages",
+          "To create database structures",
+          "To add interactivity to web pages",
+          "To define the structure of web pages"
+        ],
+        "correctAnswer": "To add interactivity to web pages",
+        "explanation": "JavaScript was created to add interactive elements to web pages, allowing for dynamic content updates without page reloads."
+      },
+      {
+        "id": 7,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "What is the output of this code?\n\nlet x = 5;\nlet y = '5';\nconsole.log(x == y);",
+        "options": [
+          "true",
+          "false",
+          "undefined",
+          "Error"
+        ],
+        "correctAnswer": "true",
+        "explanation": "The == operator in JavaScript performs type coercion, so it considers the number 5 and the string '5' to be equal."
+      },
+      {
+        "id": 8,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "Who created Python?",
+        "options": [
+          "Guido van Rossum",
+          "James Gosling",
+          "Bjarne Stroustrup",
+          "Rasmus Lerdorf"
+        ],
+        "correctAnswer": "Guido van Rossum",
+        "explanation": "Python was created by Guido van Rossum and first released in 1991."
+      },
+      {
+        "id": 9,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "What is the correct way to create a function in Python?",
+        "options": [
+          "function myFunc():",
+          "def myFunc():",
+          "create myFunc():",
+          "func myFunc():"
+        ],
+        "correctAnswer": "def myFunc():",
+        "explanation": "In Python, functions are defined using the 'def' keyword followed by the function name and parentheses."
+      },
+      {
+        "id": 10,
+        "quizId": 2,
+        "type": "true-false",
+        "text": "Python is a statically typed language.",
+        "correctAnswer": false,
+        "explanation": "Python is dynamically typed, meaning variable types are determined at runtime, not at compile time."
+      },
+      {
+        "id": 11,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "What is the output of this code?\n\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)",
+        "options": [
+          "[1, 2, 3]",
+          "[1, 2, 3, 4]",
+          "[1, 2, 3, [4]]",
+          "Error"
+        ],
+        "correctAnswer": "[1, 2, 3, 4]",
+        "explanation": "In Python, assignment creates a reference to the same object. When we modify y, we are also modifying x because they refer to the same list."
+      },
+      {
+        "id": 12,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "Which of the following is NOT a built-in data type in Python?",
+        "options": [
+          "List",
+          "Dictionary",
+          "Array",
+          "Tuple"
+        ],
+        "correctAnswer": "Array",
+        "explanation": "Array is not a built-in data type in Python. Python uses lists instead, though arrays are available through the NumPy library."
+      },
+      {
+        "id": 13,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "What does the following code return?\n\ndef func(x, y=[]):\n    y.append(x)\n    return y\n\nprint(func(1))\nprint(func(2))",
+        "options": [
+          "[1] and [2]",
+          "[1] and [1, 2]",
+          "[1, 2] and [1, 2]",
+          "Error"
+        ],
+        "correctAnswer": "[1] and [1, 2]",
+        "explanation": "In Python, default parameter values are evaluated only once when the function is defined, not each time the function is called. So the list y persists between function calls."
+      },
+      {
+        "id": 14,
+        "quizId": 2,
+        "type": "true-false",
+        "text": "In Python, indentation is optional.",
+        "correctAnswer": false,
+        "explanation": "In Python, indentation is required and used to define code blocks. Improper indentation will result in IndentationError."
+      }
+    ]
+  }
