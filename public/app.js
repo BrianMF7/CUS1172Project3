@@ -1,58 +1,56 @@
 //Variables
-let studentName = '', quizzes = [], currentQuiz = null, questions = [];
-let currentQuestionIndex = 0, userAnswers = [], correctAnswers = 0;
-let startTime = null, timePass = null;
+        let studentName = '', quizzes = [], currentQuiz = null, questions = [];
+        let currentQuestionIndex = 0, userAnswers = [], correctAnswers = 0;
+                let startTime = null, timePass = null;
 
-const API_BASE_URL = 'https://my-json-server.typicode.com/BrianMF7/CUS1172Project3';
+        const API_BASE_URL = 'https://my-json-server.typicode.com/BrianMF7/CUS1172Project3';
 
 //Add an event listener to the DOMContentLoaded event
-document.addEventListener('DOMContentLoaded', init);
+                document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
     try {
-        const response = await fetch(`${API_BASE_URL}/quizzes`);
-        if (!response.ok) throw new Error('Failed to load quizzes');
+             const response = await fetch(`${API_BASE_URL}/quizzes`);
+                       if (!response.ok) throw new Error('Failed to load quizzes');
 
-        quizzes = await response.json();
+                                  quizzes = await response.json();
         console.log('Loaded quizzes:', quizzes);
-        renderWelcomeScreen();
-    } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('app-container').innerHTML = `
+                 renderWelcomeScreen();
+                } catch (error) {
+                   console.error('Error:', error);
+                  document.getElementById('app-container').innerHTML = `
             <div class="alert alert-danger"><strong>Error:</strong> ${error.message}</div>`;
-    }
-}
+    }   }
 
 //First and welcome screen
-function renderWelcomeScreen() {
-    const template = Handlebars.compile(document.getElementById('welcomeTemplate').innerHTML);
-    document.getElementById('app-container').innerHTML = template({ quizzes });
+            function renderWelcomeScreen() {
+               const template = Handlebars.compile(document.getElementById('welcomeTemplate').innerHTML);
+                document.getElementById('app-container').innerHTML = template({ quizzes });
     document.getElementById('welcomeForm').addEventListener('submit', handleWelcomeForm);
 }
 
-//Get question count for a quiz
+             //Get question count for a quiz
 async function getQuestionCount(quizId) {
     try {
         const response = await fetch(`${API_BASE_URL}/questions?quizId=${quizId}`);
         if (!response.ok) throw new Error('Failed to load questions');
-        return (await response.json()).length;
-    } catch (error) {
+                  return (await response.json()).length;
+                     } catch (error) {
         console.error('Error getting question count:', error);
-        return 7; // Fallback
-    }
-}
+                  return 7; // Fallback
+    }}
 
-//Submit the welcome form
+            //Submit the welcome form
 async function handleWelcomeForm(e) {
-    e.preventDefault();
+                     e.preventDefault();
 
     const nameInput = document.getElementById('nameStudent');
-    const selectedQuiz = document.querySelector('input[name="quiz-select"]:checked');
+                 const selectedQuiz = document.querySelector('input[name="quiz-select"]:checked');
 
     if (!nameInput.value.trim()) {
-        alert('Please type your name');
+  alert('Please type your name');
         return;
-    }
+          }
 
     if (!selectedQuiz) {
         alert('Please choose a quiz');
@@ -60,9 +58,9 @@ async function handleWelcomeForm(e) {
     }
 
     studentName = nameInput.value.trim();
-    const quizId = parseInt(selectedQuiz.value);
+const quizId = parseInt(selectedQuiz.value);
 
-    //Pick the quiz chosen
+             //Pick the quiz chosen
     currentQuiz = quizzes.find(q => Number(q.id) === quizId);
 
     if (!currentQuiz) {
@@ -72,90 +70,89 @@ async function handleWelcomeForm(e) {
 
     //Setting up the quiz
     currentQuiz.totalQuestions = await getQuestionCount(quizId); // Get question count
-    currentQuestionIndex = 0; // Reset question index
+        currentQuestionIndex = 0; // Reset question index
     userAnswers = []; // Reset user answers
-    correctAnswers = 0; // Reset correct answers
+     correctAnswers = 0; // Reset correct answers
     questions = []; // Reset questions
-    startTime = new Date(); // Start the timer
+     startTime = new Date(); // Start the timer
 
-    startTimer();
+     startTimer();
     loadQuestion(quizId);
-}
+                        }
 
-//Timer magic works here
+                //Timer magic works here
 function startTimer() {
     if (timePass) clearInterval(timePass);
     timePass = setInterval(updateTimer, 1000);
-    updateTimer();
+                                 updateTimer();
 }
 
 function updateTimer() {
     if (!startTime) return;
 
-    const elapsedSeconds = Math.floor((new Date() - startTime) / 1000);
-    const minutes = Math.floor(elapsedSeconds / 60);
-    const seconds = elapsedSeconds % 60;
+const elapsedSeconds = Math.floor((new Date() - startTime) / 1000);
+                const minutes = Math.floor(elapsedSeconds / 60);
+     const seconds = elapsedSeconds % 60;
     const timeString = `${minutes}:${seconds.toString().padStart(2, '0')}`;
 
     const timerElement = document.getElementById('timer');
     if (timerElement) timerElement.textContent = timeString;
-}
+                        }
 
 //Questions loading
-async function loadQuestion(quizId) {
+                async function loadQuestion(quizId) {
     try {
-        const response = await fetch(`${API_BASE_URL}/questions?quizId=${quizId}`);
+                              const response = await fetch(`${API_BASE_URL}/questions?quizId=${quizId}`);
         if (!response.ok) throw new Error('Failed to load questions');
 
         const allQuestions = await response.json();
 
-        // Check if no questions found
-        if (allQuestions.length === 0 || currentQuestionIndex >= allQuestions.length) {
-            showResults();
+                     // Check if no questions found
+                     if (allQuestions.length === 0 || currentQuestionIndex >= allQuestions.length) {
+                        showResults();
             return;
         }
 
-        const question = allQuestions[currentQuestionIndex];
+                        const question = allQuestions[currentQuestionIndex];
         if (!question) {
             showResults();
-            return;
-        }
+                         return;
+     }
 
         questions.push(question);
-        renderQuestion(question);
+                      renderQuestion(question);
     } catch (error) {
-        console.error('Error:', error);
+            console.error('Error:', error);
         document.getElementById('app-container').innerHTML = `
             <div class="alert alert-danger"><strong>Error:</strong> ${error.message}</div>`;
-    }
-}
+                                    }}
 
 //Render the question
 function renderQuestion(question) {
     const template = Handlebars.compile(document.getElementById('questionlayout').innerHTML);
 
-    document.getElementById('app-container').innerHTML = template({
+                        document.getElementById('app-container').innerHTML = template({
         question,
         currentIndex: currentQuestionIndex + 1,
-        totalQuestions: currentQuiz.totalQuestions || 7,
+              totalQuestions: currentQuiz.totalQuestions || 7,
         isMultipleChoice: question.type === 'multiple-choice',
-        isTrueFalse: question.type === 'true-false',
-        codeSnippet: question.codeSnippet,
+          isTrueFalse: question.type === 'true-false',
+              codeSnippet: question.codeSnippet,
         answered: userAnswers.length,
         score: calculateScore(),
         time: getElapsedTime()
     });
 
-    document.getElementById('answer-form').addEventListener('submit', handleAnswer);
-}
+         document.getElementById('answer-form').addEventListener('submit', handleAnswer);
+                        }
 
-//Calculate the score
+                    //Calculate the score
 function calculateScore() {
     return userAnswers.length === 0 ? 0 : Math.round((correctAnswers / userAnswers.length) * 100);
-}
+                                }
 
 function getElapsedTime() {
-    if (!startTime) return '0:00';
+                                 if (!startTime) return '0:00';
 
     const elapsedSeconds = Math.floor((new Date() - startTime) / 1000);
     const minutes = Math.floor(elapsedSeconds / 60);
@@ -166,41 +163,40 @@ function getElapsedTime() {
 
 //How the answer works
 function handleAnswer(e) {
-    e.preventDefault();
+                  e.preventDefault();
 
     const selectedOption = document.querySelector('input[name="answer"]:checked');
 
-    if (!selectedOption) {
+                        if (!selectedOption) {
         alert('Please select an answer');
         return;
     }
 
-    const currentQuestion = questions[currentQuestionIndex];
+        const currentQuestion = questions[currentQuestionIndex];
     let userAnswer = selectedOption.value;
 
-    if (currentQuestion.type === 'true-false') {
+            if (currentQuestion.type === 'true-false') {
         userAnswer = userAnswer === 'true';
     }
 
     userAnswers.push(userAnswer);
 
-    if (userAnswer === currentQuestion.correctAnswer) {
+                 if (userAnswer === currentQuestion.correctAnswer) {
         correctAnswers++;
         showCorrectFeedback();
-    } else {
+                  } else {
         showIncorrectFeedback(userAnswer, currentQuestion.correctAnswer, currentQuestion.explanation);
-    }
-}
+    }}
 
-//Provide feedback for correct answer
+            //Provide feedback for correct answer
 function showCorrectFeedback() {
-    const messages = ['Brilliant!', 'Awesome!', 'Good work!', 'Excellent!', 'Great job!'];
+                       const messages = ['Brilliant!', 'Awesome!', 'Good work!', 'Excellent!', 'Great job!'];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-    const template = Handlebars.compile(document.getElementById('correct-template').innerHTML);
+                       const template = Handlebars.compile(document.getElementById('correct-template').innerHTML);
     document.getElementById('app-container').innerHTML = template({ message: randomMessage });
 
-    setTimeout(() => {
+                      setTimeout(() => {
         currentQuestionIndex++;
         loadQuestion(currentQuiz.id);
     }, 1000);
