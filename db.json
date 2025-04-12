@@ -1,0 +1,192 @@
+{
+    "quizzes": [
+      {
+        "id": 1,
+        "title": "JavaScript Quiz",
+        "description": "Lets see your knowledge in JavaScript's syntax, history, and purpose.",
+        "timeLimit": 10,
+        "passingScore": 60
+      },
+      {
+        "id": 2,
+        "title": "Python Quiz",
+        "description": "Lets see your knowledge of Python syntax, history, and purpose.",
+        "timeLimit": 10,
+        "passingScore": 70
+      }
+    ],
+    "questions": [
+      {
+        "id": 1,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "Who invented JavaScript?",
+        "options": [
+          "Brendan Eich",
+          "Tim Berners-Lee",
+          "Bill Gates",
+          "James Gosling"
+        ],
+        "correctAnswer": "Brendan Eich",
+        "explanation": "In 1995, Brendan Eich created JavaScript."
+      },
+      {
+        "id": 2,
+        "quizId": 1,
+        "type": "true-false",
+        "text": "Was JavaScript once called 'Mocha'.",
+        "correctAnswer": true,
+        "explanation": "JavaScript was once known as Mocha, then LiveScript and now JavaScript."
+      },
+      {
+        "id": 3,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "How do you comment in JavaScript?",
+        "options": [
+          "<!-- This is a comment -->",
+          "/* This is a comment */",
+          "// This is a comment",
+          "Both B and C"
+        ],
+        "correctAnswer": "Both B and C",
+        "explanation": "You can use both // and /* */ for JavaScript."
+      },
+      {
+        "id": 4,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "Which of the following doesn't exist in JavasScript?",
+        "options": [
+          "React.js",
+          "Node.js",
+          "Next.js",
+          "Java"
+        ],
+        "correctAnswer": "Java",
+        "explanation": "Java is another programming language, while React.js, Node.js, and Next.js are JavaScript frameworks and libraries."
+      },
+      {
+        "id": 5,
+        "quizId": 1,
+        "type": "true-false",
+        "text": "JavaScript is more used as a server-side programming language.",
+        "correctAnswer": false,
+        "explanation": "JavaScript is more used on the client-side in the web,but it can be also used on servers with Node.js."
+      },
+      {
+        "id": 6,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "Why do we primarily use JavaScript?",
+        "options": [
+          "To style websites",
+          "For databases",
+          "To add interactivity to web pages",
+          "To add Machine Learning in our web apps"
+        ],
+        "correctAnswer": "To add interactivity to web pages",
+        "explanation": "We use JavaScript to add interactive components to web pages, such as forms, animations, and dynamic content."
+      },
+      {
+        "id": 7,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "What is the correct way to declare a variable in JavaScript? ",
+        "options": [
+          "variable x = 7;",
+          "int x = 7;",
+          "let x = 7;",
+          "x = 7"
+        ],
+        "correctAnswer": "let x = 7;",
+        "explanation": "In JavaScript, we declare variables using let, const, or var."
+      },
+      {
+        "id": 8,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "Who created Python?",
+        "options": [
+          "Bjarne Stroustrup",
+          "Rasmus Lerdorf",
+          "Guido van Rossum",
+          "James Gosling"
+        ],
+        "correctAnswer": "Guido van Rossum",
+        "explanation": "Guido van Rossum created Python in 1991."
+      },
+      {
+        "id": 9,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "In Python, What is the correct way to create a function?",
+        "options": [
+          "myFunc():",
+          "function myFunc():",
+          "def myFunc():",
+          "thisFunc myFunc():"
+        ],
+        "correctAnswer": "def myFunc():",
+        "explanation": "You use 'def' and the name of an function with (): to define an function in Python."
+      },
+      {
+        "id": 10,
+        "quizId": 2,
+        "type": "true-false",
+        "text": "Can Pytho be used for web development?",
+        "correctAnswer": true,
+        "explanation": "There are various frameworks like Django and Flask that allow Python to be used for web development."
+      },
+      {
+        "id": 11,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "What is the output of this code?\n\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)",
+        "options": [
+          "[1, 2, 3]",
+          "[1, 2, 3, 4]",
+          "[1, 2, 3, [4]]",
+          "Error"
+        ],
+        "correctAnswer": "[1, 2, 3, 4]",
+        "explanation": "In Python, assignment creates a reference to the same object. When we change y, so does x since they refer to the same list."
+      },
+      {
+        "id": 12,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "Which of the following is not included in Python's standard library?",
+        "options": [
+          "math",
+          "random",
+          "requests",
+          "random"
+        ],
+        "correctAnswer": "requests",
+        "explanation": "In order to use requests, You need to install another third-party library using pip install requests"
+      },
+      {
+        "id": 13,
+        "quizId": 2,
+        "type": "multiple-choice",
+        "text": "Which of the following correctly creates a list of array in Python?",
+        "options": [
+          "b = (1, 2, 3, 4)",
+          "b = array(1, 2, 3, 4)",
+          "b = {1, 2, 3, 4}",
+          "b = [1, 2, 3, 4]"
+        ],
+        "correctAnswer": "b = [1, 2, 3, 4]",
+        "explanation": "In Python, we use square brackets [] to create a list."
+      },
+      {
+        "id": 14,
+        "quizId": 2,
+        "type": "true-false",
+        "text": "We don't have to indent our code in Python.",
+        "correctAnswer": false,
+        "explanation": "Indentation is required as a way to define code block otherwise there will be IndentationError."
+      }
+    ]
+    }

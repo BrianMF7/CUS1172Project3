@@ -1,0 +1,101 @@
+{
+    "quizzes": [
+      {
+        "id": 1,
+        "title": "JavaScript Basics Quiz",
+        "description": "Test your knowledge of JavaScript syntax, history, and purpose.",
+        "timeLimit": 10,
+        "passingScore": 60
+      }
+    ],
+    "questions": [
+      {
+        "id": 1,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "Who created JavaScript?",
+        "options": [
+          "Brendan Eich",
+          "Tim Berners-Lee",
+          "Bill Gates",
+          "James Gosling"
+        ],
+        "correctAnswer": "Brendan Eich",
+        "explanation": "JavaScript was created by Brendan Eich in 1995 while he was working at Netscape Communications Corporation."
+      },
+      {
+        "id": 2,
+        "quizId": 1,
+        "type": "true-false",
+        "text": "JavaScript was originally called 'Mocha'.",
+        "correctAnswer": true,
+        "explanation": "JavaScript was initially called 'Mocha', then renamed to 'LiveScript', and finally to 'JavaScript'."
+      },
+      {
+        "id": 3,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "What is the correct syntax for a JavaScript comment?",
+        "options": [
+          "<!-- This is a comment -->",
+          "// This is a comment",
+          "/* This is a comment */",
+          "Both B and C"
+        ],
+        "correctAnswer": "Both B and C",
+        "explanation": "JavaScript supports both single-line comments with // and multi-line comments with /* */."
+      },
+      {
+        "id": 4,
+        "quizId": 1,
+        "type": "code-snippet",
+        "text": "What will the following code output?",
+        "codeSnippet": "console.log(typeof([]));",
+        "options": [
+          "array",
+          "object",
+          "undefined",
+          "null"
+        ],
+        "correctAnswer": "object",
+        "explanation": "In JavaScript, arrays are actually objects, so typeof([]) returns 'object'."
+      },
+      {
+        "id": 5,
+        "quizId": 1,
+        "type": "true-false",
+        "text": "JavaScript is primarily a server-side programming language.",
+        "correctAnswer": false,
+        "explanation": "JavaScript was originally designed as a client-side scripting language for web browsers, though it is now used on servers with Node.js as well."
+      },
+      {
+        "id": 6,
+        "quizId": 1,
+        "type": "multiple-choice",
+        "text": "What is the primary purpose of JavaScript?",
+        "options": [
+          "To style web pages",
+          "To create database structures",
+          "To add interactivity to web pages",
+          "To define the structure of web pages"
+        ],
+        "correctAnswer": "To add interactivity to web pages",
+        "explanation": "JavaScript was created to add interactive elements to web pages, allowing for dynamic content updates without page reloads."
+      },
+      {
+        "id": 7,
+        "quizId": 1,
+        "type": "code-snippet",
+        "text": "What is the output of this code?",
+        "codeSnippet": "let x = 5;\nlet y = '5';\nconsole.log(x == y);",
+        "options": [
+          "true",
+          "false",
+          "undefined",
+          "Error"
+        ],
+        "correctAnswer": "true",
+        "explanation": "The == operator in JavaScript performs type coercion, so it considers the number 5 and the string '5' to be equal."
+      }
+    ]
+  }

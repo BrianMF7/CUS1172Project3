@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+             <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian's Quiz</title>
+<link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">       
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</head>
+<body>
+         <!--Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top navbar-custom">
+                     <div class="container">
+ <a class="navbar-brand" href="#">Brian's Quiz</a>
+                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                     <div class="collapse navbar-collapse" id="navbarNav">
+                                         <ul class="navbar-nav ml-auto">
+                 
+                </ul></div>
+        </div> </nav>
+    
+    <div class="content-wrapper">
+    <div class="container mt-5">
+ <h1 class="text-center mb-4">Brian's Quiz</h1>
+            <div id="app-container"></div>
+        </div> </div>
+       <!--The Footer -->
+    <footer class="footer-custom text-center">
+        <div class="container">  <p class="mb-0">&copy; 2025 Brian's Quiz | Test your coding skills here</p>
+        </div>  </footer>
+    
+    <!-- Templates from the engine -->
+  <script id="welcomeTemplate" type="text/x-handlebars-template">
+     <div class="card">
+            <div class="card-header bg-success text-white">
+                <h2>Brian's Quiz</h2>
+            </div>
+            <div class="card-body">
+                                <form id="welcomeForm">
+                     <div class="form-group">
+     <label for="nameStudent">Your Name:</label>
+                     <input type="text" class="form-control" id="nameStudent" required placeholder="Enter your name">
+     </div>
+                    <div class="form-group">
+                               <label>Choose a Quiz:</label>
+                        {{#each quizzes}}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="quiz-select" id="quiz{{id}}" value="{{id}}">
+                            <label class="form-check-label" for="quiz{{id}}">{{title}} - {{description}}</label>
+                        </div>
+                        {{/each}}
+                    </div>
+                                  <button type="submit" class="btn btn-primary">Start Quiz</button>
+                </form> </div>
+  </div> </script>
+    
+    <script id="questionlayout" type="text/x-handlebars-template">
+                      <div class="card">
+            <div class="card-header bg-info text-white">
+                         <h3>Question {{currentIndex}} of {{totalQuestions}}</h3>
+     </div>
+            <div class="card-body">
+  <p class="lead">{{question.text}}</p>
+                {{#if codeSnippet}}<pre><code>{{question.codeSnippet}}</code></pre>{{/if}}
+                <form id="answer-form">
+             {{#if isMultipleChoice}}
+                    {{#each question.options}}
+                    <div class="form-check">
+    <input class="form-check-input" type="radio" name="answer" id="option{{@index}}" value="{{this}}">
+                        <label class="form-check-label" for="option{{@index}}">{{this}}</label>
+          </div>
+                                 {{/each}}
+                                      {{/if}}
+                    {{#if isTrueFalse}}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer" id="true" value="true">
+                        <label class="form-check-label" for="true">True</label>
+                    </div>
+                    <div class="form-check">
+ <input class="form-check-input" type="radio" name="answer" id="false" value="false">
+ <label class="form-check-label" for="false">False</label>
+                    </div>
+                    {{/if}}
+                    <button type="submit" class="btn btn-primary mt-3">Submit Answer</button>
+                </form>
+                <div class="scoreboard mt-4 p-3 bg-light rounded">
+                    <div class="row">
+                        <div class="col-md-4"><strong>Questions:</strong> {{answered}}/{{totalQuestions}}</div>
+                        <div class="col-md-4"><strong>Time:</strong> <span id="timer">{{time}}</span></div>
+              <div class="col-md-4"><strong>Score:</strong> {{score}}%</div>
+                    </div>  </div>
+        </div>  </div> </script>
+    
+    <script id="correct-template" type="text/x-handlebars-template">
+ <div class="alert alert-success text-center"><h3>{{message}}</h3></div>
+    </script>
+    
+    <script id="incorrect-template" type="text/x-handlebars-template">
+        <div class="card">
+            <div class="card-header bg-danger text-white"><h3>Incorrect Answer</h3></div>
+            <div class="card-body">
+     <p><strong>Your answer:</strong> {{userAnswer}}</p>
+                <p><strong>Correct answer:</strong> {{correctAnswer}}</p>
+                <p>{{explanation}}</p>
+                <button id="got-it-btn" class="btn btn-primary">Got it!</button>
+            </div>    </div> </script>
+    
+    <script id="results-template" type="text/x-handlebars-template">
+        <div class="card">
+            <div class="card-header {{#if passed}}bg-success{{else}}bg-danger{{/if}} text-white">
+                <h2>{{#if passed}}Congratulations {{name}}! You passed the quiz!{{else}}Sorry {{name}}, you failed the quiz.{{/if}}</h2>
+            </div>
+            <div class="card-body text-center">
+                <p class="lead">Your final score: {{score}}%</p>
+                <p>You answered {{correct}} out of {{total}} questions correctly.</p>
+                <p>Time taken: {{time}}</p>
+                <div class="mt-4">
+                    <button id="retake-btn" class="btn btn-primary mr-2">Redo Quiz</button>
+                    <button id="home-btn" class="btn btn-secondary">Back to Home</button>
+                </div>
+            </div> </div> </script>
+    
+    <script src="./app.js"></script>
+</body> </html>
