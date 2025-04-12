@@ -1,0 +1,9 @@
+// filepath: /netlify/functions/db.js
+const db = require('../../db.json');
+
+exports.handler = async (event, context) => {
+    return {
+        statusCode: 200,
+        body: JSON.stringify(db),
+    };
+};
